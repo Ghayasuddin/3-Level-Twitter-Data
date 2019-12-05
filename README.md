@@ -26,5 +26,11 @@ Get three level twitter data from tweet id
 		
 		Output files are saved in tweets and user_objects folder
 		username is filename and format is pickle
+		
+	Fourth step:
+		Run Retweets.py, favourites.py and listed.py to collect lists data, favourites, retweets of collected users
+		and tweets
+		
+		Output files are saved in retweets, favorites and lists folder (json format)
 
 
