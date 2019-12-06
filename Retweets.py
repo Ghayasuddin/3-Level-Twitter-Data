@@ -49,19 +49,22 @@ for name in files:
 
 oldest = 0
 def get_all_retweets(tweet_id):
-    allretwt = []	
-    uss = api.retweets(id = tweet_id,count=200,tweet_mode="extended")
-    allretwt.extend(uss)
-    oldest = allretwt[-1].id - 1
-    
-    while len(uss) > 0:
-        print ("getting favourites before %s" % (oldest))
-        		
-        uss = api.retweets(id = tweet_id,count=200,max_id=oldest)
-        		
+    try:
+        allretwt = []	
+        uss = api.retweets(id = tweet_id,count=200,tweet_mode="extended")
         allretwt.extend(uss)
-        
         oldest = allretwt[-1].id - 1
+
+        while len(uss) > 0:
+            print ("getting favourites before %s" % (oldest))
+
+            uss = api.retweets(id = tweet_id,count=200,max_id=oldest)
+
+            allretwt.extend(uss)
+
+            oldest = allretwt[-1].id - 1
+    except:
+        print("No Retweets!")
         
     return allretwt
 
